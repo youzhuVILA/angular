@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      购物车
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="cart_list">
+    <div class="cart_item">
+      <div class="item_left">
+        <div class="item_chk">
+          <ion-checkbox color="danger"></ion-checkbox>
+        </div>
+        <div class="item_img">
+          <img src="/assets/plist/list1.jpg">
+        </div>
+      </div>
+      <div class="item_right">
+        <div class="item_title">
+          <span>111111</span>
+        </div>
+        <div class="item_info">
+          <div class="item_price">
+            <span>价格:88元</span>
+          </div>
+          <div class="item_num">
+            <ion-buttons slot="end">
+              <ion-button>
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+              <input type="text" />
+              <ion-button>
+                <ion-icon name="add"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

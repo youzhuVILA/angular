@@ -1,0 +1,99 @@
+.ihead{
+    margin-top: 1rem;
+    ion-button{
+        font-size: 1.4rem;
+        --color:black;
+        margin-right: 1rem;
+    }
+}
+
+.sub_menu{
+    --min-height:4rem;
+    .sub_nav{
+        height: 4rem;
+        display: flex;
+        border-top: 3px solid #eee;
+        align-items: center;
+        div{
+            
+            flex:1;
+            font-size: 1.6rem;
+            font-weight:bold;
+            text-align: center;
+        }
+    }
+}
+
+.search_content{
+    .search_hot{
+        padding: .5rem;
+        .hot_title{
+            span{
+                font-size: 1.6rem;
+                font-weight: bold;
+            }
+        }
+        .hot_content{
+            span{
+                background-color: #eee;
+                font-size: 1.4rem;
+                display: inline-block;
+                padding: .3rem .8rem;
+                margin: .5rem;
+                border-radius: .5rem;
+            }
+        }
+    }
+    .search_his{
+        padding: .5rem;
+        .his_title{
+            span{
+                font-size: 1.6rem;
+                font-weight: bold; 
+            }
+        }
+        .his_content{
+            ion-list{
+                ion-item{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+}
+
+.search_result{
+    .search_list{
+        .search_item{
+            width: 100%;
+            display: flex;
+            height: 10rem;
+            border-bottom: 1px solid #eee;
+            .item_left{
+                width: 10rem;
+                padding: .5rem;
+                img{
+                    width: 9rem;
+                    height: 9rem;
+                }
+            }
+            .item_right{
+                padding: .5rem;
+                flex:1;
+                .item_title{
+                    height:60%;
+                    span{
+                        font-size: 1.6rem;
+                        font-weight: 550;
+                    }
+                }
+                .item_price{
+                    span{
+                        font-size: 1.4rem;
+                        color:red;
+                    }
+                }
+            }
+        }
+    }
+}

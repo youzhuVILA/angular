@@ -1,0 +1,63 @@
+.ihead {
+    margin: 1rem;
+
+    ion-badge {
+        position: absolute;
+        right: 2px;
+        top: 2px;
+    }
+
+    ion-button{
+        font-size: 1.4rem;
+        --color:black;
+        margin-right: 1rem;
+    }
+}
+
+.love_title {
+    padding: .5rem;
+    font-size: 1.4rem;
+
+    &::before {
+        border-left: 3px solid #cb1a27;
+        content: "";
+        height: 1.4rem;
+        display: inline-block;
+        position: relative;
+        top: .2rem;
+    }
+
+}
+
+.hotlist {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    ul {
+        width: 90rem;
+        height: 10rem;
+
+        li {
+            float: left;
+            width: 10rem;
+text-align: center;
+            img {
+                width: 8rem;
+                height: 8rem;
+            }
+        }
+    }
+    .clearfix{
+        &::after{
+            display: block;
+            content: "";
+            height: 0px;
+            clear: both;
+        }
+    }
+}
+
+ul,ol {
+    list-style: none;
+}

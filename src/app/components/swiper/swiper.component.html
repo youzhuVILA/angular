@@ -1,0 +1,14 @@
+<swiper-container
+  autoplay="true"
+  loop="true"
+  speed="500"
+  pagination="true"
+>
+@for(item of slidelist;track $index)
+{
+  <swiper-slide>
+    <img [src]="config.dn+item.pic">
+  </swiper-slide>
+}
+</swiper-container>
+

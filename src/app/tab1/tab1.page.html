@@ -1,0 +1,44 @@
+<ion-header [translucent]="true" class="ihead">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <img src="/assets/icon/qr.png" />
+    </ion-buttons>
+    <ion-searchbar placeholder="请输入关键词" animated (tap)="gosearch()"></ion-searchbar>
+    <ion-buttons slot="end">
+      <img src="/assets/icon/msg.png" />
+      <ion-badge color="danger" mode="ios">8</ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-swiper></app-swiper>
+  <div class="love_title">
+    猜你喜欢
+  </div>
+  <div class="hotlist">
+    <ul>
+
+      @for(item of hotlist;track $index){
+      <li>
+        <img [src]="config.dn+item.pic">
+        <p>{{item.title}}</p>
+      </li>
+      }
+    </ul>
+  </div>
+  <div class="love_title">
+    商品列表
+  </div>
+  <div class="plist">
+    <ion-grid fixed>
+      <ion-row>
+        @for (item of plist; track $index) {
+        <ion-col size="6">
+          <img [src]="config.dn+item.pic">
+          <p>{{item.title}}</p>
+        </ion-col>}
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

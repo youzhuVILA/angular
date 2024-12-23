@@ -1,0 +1,45 @@
+.user_center{
+    background-color: red;
+    width: 100%;
+    height: 13rem;
+    display: flex;
+    // padding: 5rem 3rem;
+    align-items: center;
+    .user_left{
+        margin-left: 5rem;
+        width: 5rem;
+        img{
+            width: 5rem;
+            height: 5rem;
+            border-radius: 5rem;
+        }
+    }
+    .user_right{
+        flex:1;
+        margin-left: 2rem;
+        color:white;
+        p{
+            font-size: 1.6rem;
+            font-weight: 550;
+        }
+    }
+}
+
+ion-list{
+    margin-top: 2rem;
+
+    ion-item{
+        font-size:1.8rem;
+        
+    }
+    ion-laber{
+        font-size:1.6rem;
+    }
+    ion-item-divider{
+        min-height:.5rem;
+    }
+    .item.sc-ion-label-ios-h, .item .sc-ion-label-ios-h{
+        margin-left: 1rem;
+    }
+    
+}

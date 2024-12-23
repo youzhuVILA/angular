@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ihead">
+      <ion-button (tap)="goback()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="请输入..." animated class="ihead"></ion-searchbar>
+    <ion-buttons slot="end" class="ihead">
+      <ion-button>搜索</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar class="sub_menu">
+    <div class="sub_nav">
+      @for(item of subheader;track $index){
+        <div (click)="headerChange(item.id)" [ngClass]="{actived:selectid==item.id}">{{item.title}}</div>
+      } 
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="search_result">
+    <div class="search_list">
+      @for(item of productlist;track $index){
+        <div class="search_item" [routerLink]="['/pdetail']" [queryParams]="{id:item._id}">
+          <div class="item_left">
+            <img [src]="config.dn+item.pic">
+          </div>
+          <div class="item_right">
+            <div class="item_title">
+              <span>{{item.title}}</span>
+            </div>
+            <div class="item_price">
+              <span>{{item.price}}元</span>
+            </div>
+          </div>
+        </div>
+      }
+      </div>
+  </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="getProductlist($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

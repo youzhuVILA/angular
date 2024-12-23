@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="ihead">
+      <ion-button >
+        <img src="/assets/icon/qr.png">
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-searchbar class="search" placeholder="请输入关键词" (tap)="gosearch()"></ion-searchbar>
+
+    <ion-buttons slot="end" class="ihead">
+      <ion-button>
+        <img src="/assets/icon/msg.png">
+        <ion-badge color="danger">8</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="cate">
+    <div class="cate_left">
+      <ion-list>
+        @for(item of lcate;track $index){
+          <ion-item (tap)="getRcate(item._id)" [ngClass]="{taped: item._id==rparentid}"> 
+            <ion-label>{{item.title}}</ion-label>
+          </ion-item>
+        }
+      </ion-list>
+    </div>
+    <div class="cate_right">
+      <ion-grid fixed>
+        <ion-row>
+          @for(item of rcate; track $index){
+            <ion-col size="4" [routerLink]="['/productlist']" [queryParams]="{cid:item._id}">
+              <img [src]="config.dn+item.pic">
+              <p>{{item.title}}</p>
+            </ion-col>
+          }
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+</ion-content>
