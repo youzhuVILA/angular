@@ -25,7 +25,15 @@
       @for(item of productlist;track $index){
         <div class="search_item" [routerLink]="['/pdetail']" [queryParams]="{id:item._id}">
           <div class="item_left">
-            <img [src]="config.dn+item.pic">
+            <ion-img 
+              [src]="'assets/images/placeholder.png'" 
+              [attr.data-src]="item.pic"
+              (ionImgWillLoad)="lazyLoadImage($event)"
+              class="lazy-image">
+              <div class="loading-spinner" *ngIf="!item.loaded">
+                <ion-spinner name="crescent"></ion-spinner>
+              </div>
+            </ion-img>
           </div>
           <div class="item_right">
             <div class="item_title">
@@ -37,7 +45,7 @@
           </div>
         </div>
       }
-      </div>
+    </div>
   </div>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="getProductlist($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
