@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GetDataService } from '../services/getdata.service';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { loadCart } from '../store/cart.store';
+
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.page.html',
@@ -37,7 +40,7 @@ export class ProductlistPage implements OnInit {
     }];
 
   productlist: Array<any> = [];
-  constructor(private nav: NavController, private gds: GetDataService, private act: ActivatedRoute) {
+  constructor(private nav: NavController, private gds: GetDataService, private act: ActivatedRoute, private store: Store) {
     this.config = gds.config;
     this.act.queryParams.subscribe((data: any) => {
       this.cid = data.cid;
@@ -71,5 +74,11 @@ export class ProductlistPage implements OnInit {
     this.sort = this.subheader[id - 1].field + ":" + this.subheader[id - 1].sort;
     this.subheader[id - 1].sort = this.subheader[id - 1].sort * (-1);
     this.getProductlist(null);
+  }
+
+  loadCartData() {
+    this.store.dispatch(loadCart());
+    // 实际项目中这里通常会配合@ngrx/effects处理异步操作
+    // 例如：发起API请求 -> 成功时dispatch(loadCartSuccess) -> 更新状态
   }
 }
