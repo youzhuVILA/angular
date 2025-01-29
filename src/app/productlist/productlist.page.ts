@@ -72,4 +72,22 @@ export class ProductlistPage implements OnInit {
     this.subheader[id - 1].sort = this.subheader[id - 1].sort * (-1);
     this.getProductlist(null);
   }
+  lazyLoadImage(event: Event) {
+    const img = event.target as HTMLImageElement;
+    const dataSrc = img.dataset['src'];
+    
+    if (dataSrc && !img.src.includes(dataSrc)) {
+      // 显示加载状态
+      const item = this.productlist.find(p => p.thumb === dataSrc);
+      if (item) item.loaded = false;
+
+      // 模拟延迟加载
+      setTimeout(() => {
+        img.src = dataSrc;
+        img.onload = () => {
+          if (item) item.loaded = true;
+        };
+      }, 300); // 根据实际需要调整延迟时间
+    }
+  }
 }

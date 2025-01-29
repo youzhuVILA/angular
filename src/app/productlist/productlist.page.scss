@@ -62,3 +62,30 @@
         }
     }
 }
+
+.lazy-image {
+  position: relative;
+  min-height: 150px;
+  background: #f5f5f5;
+
+  .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    ion-spinner {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  
+  img {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    
+    &[loaded] {
+      opacity: 1;
+    }
+  }
+}
