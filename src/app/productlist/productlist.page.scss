@@ -62,3 +62,37 @@
         }
     }
 }
+
+.search_item {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  &::after {
+    content: '删除';
+    position: absolute;
+    right: -60px;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    background: #ff4444;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+  }
+
+  &.swiping {
+    transform: translateX(60px);
+    background: #fff8f8;
+    
+    &::after {
+      right: 0;
+    }
+  }
+}

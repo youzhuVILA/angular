@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GetDataService } from '../services/getdata.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.page.html',
@@ -37,7 +40,7 @@ export class ProductlistPage implements OnInit {
     }];
 
   productlist: Array<any> = [];
-  constructor(private nav: NavController, private gds: GetDataService, private act: ActivatedRoute) {
+  constructor(private nav: NavController, private gds: GetDataService, private act: ActivatedRoute, private toastController: ToastController, private alertController: AlertController) {
     this.config = gds.config;
     this.act.queryParams.subscribe((data: any) => {
       this.cid = data.cid;
@@ -71,5 +74,46 @@ export class ProductlistPage implements OnInit {
     this.sort = this.subheader[id - 1].field + ":" + this.subheader[id - 1].sort;
     this.subheader[id - 1].sort = this.subheader[id - 1].sort * (-1);
     this.getProductlist(null);
+  }
+  async deleteItem(item: any) {
+    const alert = await this.alertController.create({
+      header: '确认删除',
+      message: '确定要删除这个商品吗？',
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel'
+        },
+        {
+          text: '删除',
+          handler: async () => {
+            try {
+              await this.gds.getData('shop/api/delete.php?id=' + item._id);
+              this.productlist = this.productlist.filter(p => p._id !== item._id);
+              
+              // 添加成功提示
+              const toast = await this.toastController.create({
+                message: '删除成功',
+                duration: 1500,
+                position: 'top',
+                color: 'success'
+              });
+              await toast.present();
+              
+            } catch (error) {
+              const toast = await this.toastController.create({
+                message: '删除失败，请重试',
+                duration: 2000,
+                position: 'top',
+                color: 'danger'
+              });
+              await toast.present();
+            }
+          }
+        }
+      ]
+    });
+    
+    await alert.present();
   }
 }

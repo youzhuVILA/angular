@@ -35,7 +35,22 @@
             "src/theme/variables.scss"
             ,"node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
           ],
-            "scripts": []
+            "scripts": [],
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": true
+              },
+              "fonts": {
+                "inline": true
+              },
+              "images": {
+                "optimization": true,
+                "webp": true,
+                "maxSize": 1024
+              }
+            }
           },
           "configurations": {
             "production": {
