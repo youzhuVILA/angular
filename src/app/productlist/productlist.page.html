@@ -23,7 +23,11 @@
   <div class="search_result">
     <div class="search_list">
       @for(item of productlist;track $index){
-        <div class="search_item" [routerLink]="['/pdetail']" [queryParams]="{id:item._id}">
+        <div class="search_item" 
+             swipeDelete 
+             (delete)="deleteItem(item)"
+             [routerLink]="['/pdetail']" 
+             [queryParams]="{id:item._id}">
           <div class="item_left">
             <img [src]="config.dn+item.pic">
           </div>

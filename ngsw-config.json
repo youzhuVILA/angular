@@ -1,0 +1,31 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app-cache",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.css",
+          "/*.js",
+          "/manifest.webmanifest"
+        ],
+        "urls": [
+          "https://cdn.example.com/fonts/**"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-cache",
+      "urls": ["/shop/api/**"],
+      "cacheConfig": {
+        "maxSize": 20,
+        "maxAge": "1h",
+        "strategy": "freshness"
+      }
+    }
+  ]
+} 

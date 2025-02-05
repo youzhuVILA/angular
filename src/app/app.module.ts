@@ -10,9 +10,11 @@ import { HammerModule } from '@angular/platform-browser';
 import 'hammerjs';
 import { GetDataService } from './services/getdata.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SwipeDeleteDirective } from './directives/swipe-delete.directive';
+
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot({ mode: 'ios' }), AppRoutingModule, HammerModule,HttpClientModule],
+  declarations: [AppComponent, SwipeDeleteDirective],
+  imports: [BrowserModule, IonicModule.forRoot({ mode: 'ios' }), AppRoutingModule, HammerModule, HttpClientModule],
   providers:
     [
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

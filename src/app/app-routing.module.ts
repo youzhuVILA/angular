@@ -16,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'productlist',
-    loadChildren: () => import('./productlist/productlist.module').then(m => m.ProductlistPageModule)
+    loadChildren: () => import('./productlist/productlist.module').then(m => m.ProductlistPageModule),
+    data: { preload: true }
   },
   {
     path: 'pdetail',
