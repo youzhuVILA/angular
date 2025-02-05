@@ -1,0 +1,75 @@
+ion-content {
+  --background: #f8f9fa;
+  --padding-top: 2rem;
+}
+
+form {
+  ion-item {
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+
+  .error-messages {
+    padding: 0 1rem;
+
+    ion-note {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .submit-btn {
+    --border-radius: 25px;
+    margin: 2rem 1rem 0;
+    height: 50px;
+    font-size: 1.1rem;
+  }
+}
+
+ion-toolbar {
+  --border-color: #fff;
+
+  ion-buttons {
+    ion-button {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.register_logo {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+
+  img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 12rem;
+  }
+}
+
+.btn_login {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.error-messages {
+  padding: 0 16px;
+
+  ion-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 14px;
+  }
+}
+
+.submit-btn {
+  --border-radius: 25px;
+  height: 50px;
+  font-size: 1.2rem;
+  margin: 2rem auto;
+  width: 90%;
+}

@@ -17,21 +17,44 @@
   <div class="login_log">
     <img src="/assets/log.jpg">
   </div>
-  <ion-list>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <ion-item>
-      <ion-input placeholder="手机号/邮箱号"></ion-input>
+      <ion-label position="floating">邮箱</ion-label>
+      <ion-input formControlName="username" type="email"></ion-input>
     </ion-item>
+    <div class="error-messages">
+      <ion-note *ngIf="f['username'].errors?.['required'] && submitted" color="danger">
+        邮箱不能为空
+      </ion-note>
+      <ion-note *ngIf="f['username'].errors?.['email'] && submitted" color="danger">
+        请输入有效的邮箱地址
+      </ion-note>
+    </div>
+
     <ion-item>
-      <ion-input placeholder="密码"></ion-input>
+      <ion-label position="floating">密码</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
+    <div class="error-messages">
+      <ion-note *ngIf="f['password'].errors?.['required'] && submitted" color="danger">
+        密码不能为空
+      </ion-note>
+      <ion-note *ngIf="f['password'].errors?.['minlength'] && submitted" color="danger">
+        密码至少需要6位
+      </ion-note>
+    </div>
+
     <ion-item lines="none">
-      <span slot="start">忘记密码</span>
-      <span slot="end">新用户注册</span>
+      <span slot="start" (click)="nav.navigateForward('/forgot-password')">忘记密码</span>
+      <ion-button slot="end" fill="clear" color="primary" routerLink="/register">
+        新用户注册
+      </ion-button>
     </ion-item>
-  </ion-list>
-  <ion-buttons>
-    <ion-button (tap)="dologin()" expand="block" fill="solid" color="danger" class="btn_login">
-      登录
-    </ion-button>
-  </ion-buttons>
+
+    <ion-buttons>
+      <ion-button expand="block" type="submit" fill="solid" color="danger" class="btn_login">
+        登录
+      </ion-button>
+    </ion-buttons>
+  </form>
 </ion-content>
