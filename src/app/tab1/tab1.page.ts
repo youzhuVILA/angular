@@ -8,23 +8,23 @@ import { GetDataService } from '../services/getdata.service';
 })
 export class Tab1Page {
 
-  public config:any=[];
-  hotlist:Array<any>=[];
-  plist:Array<any>=[];
-  constructor(private nav:NavController,private gds:GetDataService) {
-    this.config=gds.config;
+  public config: any = [];
+  hotlist: Array<any> = [];
+  plist: Array<any> = [];
+  constructor(private nav: NavController, private gds: GetDataService) {
+    this.config = gds.config;
   }
   ngOnInit(): void {
-    this.gds.getData('shop/api/photlist.php').then((response:any)=>{
-      this.hotlist=response.data.result;
+    this.gds.getData('shop/api/photlist.php').then((response: any) => {
+      this.hotlist = response.data.result;
     })
-    this.gds.getData('shop/api/plist.php').then((response:any)=>{
-      this.plist=response.data.result;
+    this.gds.getData('shop/api/plist.php').then((response: any) => {
+      this.plist = response.data.result;
       console.log(response);
     })
-    
+
   }
-  gosearch(){
+  gosearch() {
     this.nav.navigateForward('search');
   }
 }

@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="nav.back()" color="dark">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>新用户注册</ion-title>
+        <ion-buttons slot="end">
+            <ion-button color="dark" (click)="nav.navigateRoot('/tabs/tab1')">
+                返回首页
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="register_logo">
+        <img src="/assets/log.jpg">
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- 用户名输入 -->
+        <ion-item>
+            <ion-label position="floating">用户名</ion-label>
+            <ion-input formControlName="username" type="text"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ion-note *ngIf="f['username'].errors?.['required'] && submitted" color="danger">
+                用户名不能为空
+            </ion-note>
+            <ion-note *ngIf="f['username'].errors?.['minlength']" color="danger">
+                用户名至少3个字符
+            </ion-note>
+        </div>
+
+        <!-- 邮箱输入 -->
+        <ion-item>
+            <ion-label position="floating">电子邮箱</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ion-note *ngIf="f['email'].errors?.['required'] && submitted" color="danger">
+                邮箱不能为空
+            </ion-note>
+            <ion-note *ngIf="f['email'].errors?.['email']" color="danger">
+                请输入有效的邮箱地址
+            </ion-note>
+        </div>
+
+        <!-- 密码输入 -->
+        <ion-item>
+            <ion-label position="floating">密码</ion-label>
+            <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="password"></ion-input>
+            <ion-icon slot="end" [name]="showPassword ? 'eye-off' : 'eye'" (click)="showPassword = !showPassword"
+                style="cursor: pointer;">
+            </ion-icon>
+        </ion-item>
+        <div class="error-messages">
+            <ion-note *ngIf="f['password'].errors?.['required'] && submitted" color="danger">
+                密码不能为空
+            </ion-note>
+            <ion-note *ngIf="f['password'].errors?.['minlength']" color="danger">
+                密码至少需要6位
+            </ion-note>
+        </div>
+
+        <!-- 确认密码 -->
+        <ion-item>
+            <ion-label position="floating">确认密码</ion-label>
+            <ion-input type="password" formControlName="confirmPassword"></ion-input>
+        </ion-item>
+        <div class="error-messages">
+            <ion-note *ngIf="f['confirmPassword'].errors?.['required'] && submitted" color="danger">
+                请确认密码
+            </ion-note>
+            <ion-note *ngIf="f['confirmPassword'].errors?.['mustMatch']" color="danger">
+                两次输入的密码不一致
+            </ion-note>
+        </div>
+
+        <!-- 提交按钮 -->
+        <ion-button type="submit" expand="block" fill="solid" color="danger" class="submit-btn"
+            [disabled]="registerForm.invalid && submitted">
+            立即注册
+        </ion-button>
+    </form>
+</ion-content>
